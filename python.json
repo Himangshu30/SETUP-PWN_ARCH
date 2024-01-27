@@ -1,0 +1,28 @@
+{
+	"pwn": {
+		"prefix": "pwn",
+		"body": [
+			"from pwn import *",
+			"",
+			"try:",
+			"\tsh.close()",
+			"except:",
+			"\tpass",
+			"",
+			"context.clear(arch='amd64')",
+			"context.log_level = 'debug'",
+			"context.terminal = ['/path/to/hyperpwn-client.sh']",
+			"",
+			"filename = './${1:a.out}'",
+			"",
+			"elf = ELF(filename)",
+			"libc = elf.libc",
+			"",
+			"sh = gdb.debug(filename) # type: pwnlib.tubes.process.process",
+			"# sh = process(filename)",
+			"# sh = remote('127.0.0.1', 7777)",
+			""
+		],
+		"description": "pwn script template"
+	}
+}
